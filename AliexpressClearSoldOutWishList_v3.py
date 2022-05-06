@@ -7,7 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from time import sleep
 
-4
 from tqdm import tqdm
 
 myUser = "login"  # define login
@@ -16,7 +15,7 @@ myPassword = "password"  # define password
 urls = list()
 
 
-def getDriver(headless=True):
+def getdriver(headless=True):
     if headless:
         options = FirefoxOptions()
         options.add_argument("--headless")
@@ -24,7 +23,7 @@ def getDriver(headless=True):
     return webdriver.Firefox()
 
 
-driver = getDriver(headless=False)
+driver = getdriver(headless=False)
 # driver.maximize_window()
 driver.get('https://login.aliexpress.ru/')
 sleep(5)
@@ -47,7 +46,7 @@ for i in tqdm(range(1, 51, 1)):  # 50 pages for wishlist
         '2]/p/a'))
 
     for a in links:
-        print(links)
+        # print(links)
         #        print(title.text)
         urls.append(a.get_attribute("href"))
 
