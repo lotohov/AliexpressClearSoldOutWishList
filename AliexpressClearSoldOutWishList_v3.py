@@ -29,17 +29,13 @@ driver = getDriver(headless=False)
 driver.get('https://login.aliexpress.ru/')
 sleep(5)
 # Login
-# driver.switch_to.frame(0)
 element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.ID, "fm-login-id")))
-# element = driver.find_element_by_id("fm-login-id")
 element = driver.find_element(By.ID, 'fm-login-id')
 element.send_keys(myUser)
 element = driver.find_element(By.ID, 'fm-login-password')
-# element = driver.find_element_by_id("fm-login-password")
 element.send_keys(myPassword)
 driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div/button").click()
 driver.switch_to.default_content()
-# element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.ID, "nav-user-account")))
 sleep(5)
 
 for i in tqdm(range(1, 51, 1)):  # 50 pages for wishlist
